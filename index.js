@@ -1,47 +1,38 @@
-function validateDOB() {
-    var dobInput = document.getElementById('dob');
-    var dob = new Date(dobInput.value);
-    var now = new Date();
-    var minAg = 18;
-    var maxAg = 55;
-    var age = now.getFullYear() - dob.getFullYear();
+const userEntries = JSON.parse(localStorage.getItem("user-entries")) || [];
 
-    if (now.getMonth() < dob.getMonth() || (now.getMonth() === dob.getMonth() && now.getDate() < dob.getDate())) {
-        age--;
-    }
-
-    if (age < minAg || age > maxAg) {
-        alert("Age must be between 18 and 55 years.");
-        dobInput.value = ''; 
-    }
+function displayUserEntries() {
+    const tableBody = document.querySelector('#userTable tbody');
+    tableBody.innerHTML = "";
+    userEntries.forEach(entry => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td style="border: 1px solid #ccc; padding: 0.5em;">${entry.name}</td>
+            <td style="border: 1px solid #ccc; padding: 0.5em;">${entry.email}</td>
+            <td style="border: 1px solid #ccc; padding: 0.5em;">${entry.password}</td>
+            <td style="border: 1px solid #ccc; padding: 0.5em;">${entry.dob}</td>
+            <td style="border: 1px solid #ccc; padding: 0.5em;">${entry.terms}</td>
+        `;
+        tableBody.appendChild(row);
+    });
 }
 
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault(); 
+function validateForm(e) {
+    e.preventDefault();
+    const name = document.querySelector('#name').value;
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
+    const dob = document.querySelector('#dob').value;
+    const terms = document.querySelector('#terms').checked;
+    const userEntry = {
+        name,
+        email,
+        password,
+        dob,
+        terms
+    };
+    userEntries.push(userEntry);
+    localStorage.setItem("user-entries", JSON.stringify(userEntries));
+    displayUserEntries();
+}
 
-   
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var dob = document.getElementById("dob").value;
-    var terms = document.getElementById("terms").checked;
-   
-   
-    var table = document.getElementById("userTable");
-    var row = table.insertRow(-1);
-    var nameCell = row.insertCell(0);
-    var emailCell = row.insertCell(1);
-    var passwordCell = row.insertCell(2);
-    var dobCell = row.insertCell(3);
-    var termsCell = row.insertCell(4);
-
-    nameCell.innerHTML = name;
-    emailCell.innerHTML = email;
-    dobCell.innerHTML = dob;
-    passwordCell.innerHTML = password;
-    termsCell.innerHTML = terms ? 'Yes' : 'No';
-
-
-  
-    document.getElementById("registrationForm").reset();
-});
+document.addEventListener("DOMContentLoaded", displayUserEntries);
