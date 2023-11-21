@@ -1,55 +1,58 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js"></script>
     <title>Registration Form</title>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-    </style>
 </head>
+
 <body>
-    <form id="registrationForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"  required> <br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"  required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"  required><br><br>
-    
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" onchange="validateDOB()" required><br><br>
-        
-    
-        <label for="terms">Accept Terms:</label>
-        <input type="checkbox" id="terms" name="terms" required><br><br>
-    
-        
-        <button type="submit">Submit</button>
-       
-    </form><br>
-    <table id="userTable" >
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Date of Birth</th>
-                <th>Accepted terms?</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-        </tbody>
-    </table>
-    
-    <script src="index.js"></script>
-    
+    <div>
+        <h1 style="text-align: center; font-size: 2em; font-weight: bold; margin: 1em;">Registration Form</h1>
+        <form id="registrationForm" style="background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 0.375em; padding: 1.25em; width: 50%; margin: auto;" onsubmit="validateForm(event)">
+            <div style="margin-bottom: 1em;">
+                <label style="color: #333; font-size: 0.875em; font-weight: bold; margin-bottom: 0.5em;" for="name">Name</label>
+                <input style="width: 100%; padding: 0.5em; border: 1px solid #ccc; border-radius: 0.25em;" id="name" type="text" placeholder="Enter your name" required>
+            </div>
+            <div style="margin-bottom: 1em;">
+                <label style="color: #333; font-size: 0.875em; font-weight: bold; margin-bottom: 0.5em;" for="email">Email</label>
+                <input style="width: 100%; padding: 0.5em; border: 1px solid #ccc; border-radius: 0.25em;" id="email" type="email" placeholder="Enter your email" required>
+            </div>
+            <div style="margin-bottom: 1em;">
+                <label style="color: #333; font-size: 0.875em; font-weight: bold; margin-bottom: 0.5em;" for="password">Password</label>
+                <input style="width: 100%; padding: 0.5em; border: 1px solid #ccc; border-radius: 0.25em;" id="password" type="password" placeholder="Enter your password" required>
+            </div>
+            <div style="margin-bottom: 1em;">
+                <label style="color: #333; font-size: 0.875em; font-weight: bold; margin-bottom: 0.5em;" for="dob">Date of Birth</label>
+                <input style="width: 100%; padding: 0.5em; border: 1px solid #ccc; border-radius: 0.25em;" id="dob" type="date" max="2004-01-01" min="1968-12-31" required>
+            </div>
+            <div style="margin-bottom: 1em;">
+                <label style="display: flex; align-items: center; color: #333; font-size: 0.875em; font-weight: bold;">
+                    <input style="margin-right: 0.5em;" type="checkbox" id="terms" required>
+                    <span style="font-size: 0.75em;">I accept the terms and conditions</span>
+                </label>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <button id="submitBtn" style="background-color: grey; color: white; font-weight: bold; padding: 0.75em 1.5em; border: none; border-radius: 0.25em; cursor: pointer;" type="submit">Submit</button>
+                <button id="resetBtn" style="background-color:grey; color: white; font-weight: bold; padding: 0.75em 1.5em; border: none; border-radius: 0.25em; cursor: pointer;" type="reset">Reset</button>
+            </div>
+        </form>
+        <table id="userTable" style="background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 0.375em; width: 66.67%; margin: auto;">
+            <thead style="background-color:grey; color: white;">
+                <tr>
+                    <th style="padding: 0.5em; text-align: left;">Name</th>
+                    <th style="padding: 0.5em; text-align: left;">Email</th>
+                    <th style="padding: 0.5em; text-align: left;">Password</th>
+                    <th style="padding: 0.5em; text-align: left;">Dob</th>
+                    <th style="padding: 0.5em; text-align: left;">Accepted terms?</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </body>
+
 </html>
