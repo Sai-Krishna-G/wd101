@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"  required> <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"  required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"  required><br><br>
+    
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" onchange="validateDOB()" required><br><br>
+        
+    
+        <label for="terms">Accept Terms:</label>
+        <input type="checkbox" id="terms" name="terms" required><br><br>
+    
+        
+        <button type="submit">Submit</button>
+       
+    </form><br>
+    <table id="userTable" >
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Date of Birth</th>
+                <th>Accepted terms?</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+    
+    <script src="index.js"></script>
+    
+</body>
+</html>
